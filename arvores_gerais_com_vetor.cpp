@@ -121,14 +121,29 @@ node* ARVORE::sub_arvore(std::string &S, int &i){
         q = sub_arvore(S,i);
         if (q== NULL) break;
         p->filho.push_back(q);
+        p->pai= p;
     }
     return p;
 }
 
 int main() {
-    ARVORE T ("(a (b)(c)(d)");
-    T.pre_ordem();
+    std::string s;
+    //s = "(a     (b (e) (f))    (c (g (k)(l (m (n (o)(p)(q))))))     (d (h)(i)(j)))";
+    //s = "(a (b)(c)(d) )";
+    s = "(a (b(d)(e)) (c(f)(g)) )";
+    ARVORE T (s);
+    std::cout << "Pre-Ordem nao recursiva --- "; T.pre_ordem_naorec();
+    std::cout << "Pre-Ordem ----------------- "; T.pre_ordem();
+    std::cout << "Pos-Ordem ----------------- "; T.pos_ordem();
+    std::cout << "Nivel Ordem --------------- "; T.nivel_ordem();
 }
+
+
+
+
+
+
+
 
 
 
